@@ -1,3 +1,9 @@
+package main
+
+import (
+	"fmt"
+)
+
 func main() {
 	// Regular declaration with initialization
 	var age int = 41
