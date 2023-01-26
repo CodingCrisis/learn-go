@@ -106,4 +106,15 @@ func main() {
 	fmt.Println(aa1)
 	fmt.Printf("Length: %v\n", len(aa1))
 	fmt.Printf("Capacity: %v\n", cap(aa1))
+
+	// Removing leading/trailing elements from a slice
+	aa2 := []int{1, 2, 3, 4, 5}
+	ab2 := aa2[1 : len(aa2)-1]
+	fmt.Println(aa2)
+	fmt.Println(ab2)
+	// Removing a central element is a bit more tricky
+	// WARNING!!! this will fuck up any other references to the underlying array
+	ac2 := append(aa2[:2], aa2[3:]...)
+	fmt.Println(ac2)
+	fmt.Println(aa2)
 }
