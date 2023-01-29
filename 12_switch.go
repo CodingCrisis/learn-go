@@ -50,6 +50,7 @@ func main() {
 	case string:
 		fmt.Println("k is a string")
 		// We can use break if it is necessary for some specific reason
+		// E.g. validating data before doing something and breaking if the validation fails
 		break
 		fmt.Println("and do I print this or not?")
 	case [2]int:
