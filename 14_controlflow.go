@@ -21,8 +21,17 @@ func def2() {
 	fmt.Println("end of fun def2")
 }	
 
+func def3(){
+	// This one is tricky, as defer is evaluated at the place in code it is
+	// So "start" is going to be printed
+	a := "start"
+	defer println(a)
+	a = "end"
+}
+
 func main() {
 	def1()
 	def2()
+	def3()
 	fmt.Println("end of main")
 }
