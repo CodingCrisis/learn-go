@@ -30,6 +30,14 @@ func main() {
 
 	s4 := sum4(1, 2, 3, 4, 5)
 	fmt.Println("Sum again, but named return param:", s4)
+
+	// Typical usage of err return parameter
+	d, err := divide(5.0, 0.0)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(d)
 }
 
 // Upper case name is public, lowercase not
@@ -105,4 +113,19 @@ func sum4(values ...int) (result int) {
 		result += v
 	}
 	return
+}
+
+// Example of returning multiple values from a function
+func divide(a, b float64) (float64, error){
+	// we could panic here:
+	// if b == 0.0 {
+	// panic("Cannot provide zero as second value")
+	// }
+	
+	// but we could return an error via a second parameter
+	if b == 0.0 {
+		// Errorf provides a possibility to create error messages
+		return 0.0, fmt.Errorf("Cannot divide by zero")
+	}
+	return a / b, nil
 }
