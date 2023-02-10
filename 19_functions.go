@@ -18,7 +18,7 @@ func main() {
 
 	sayGreetingRef(&greeting, &name)
 	fmt.Println("Has name changed when passing to function via value?", name)
-	
+
 	// variatic parameter
 	sum("And the sum is: ", 1, 2, 3, 4, 5)
 
@@ -74,9 +74,10 @@ func sayGreetingRef(greeting, name *string) {
 
 // Function with multiple input variables
 // variatic parameter can be only one per function and it needs to be the last one
-func sum(msg string, values ...int){
+func sum(msg string, values ...int) {
 	fmt.Println(values)
 	result := 0
+	// variatic params are available as a slice
 	for _, v := range values {
 		result += v
 	}
@@ -94,8 +95,8 @@ func sum2(values ...int) int {
 }
 
 // Same as "sum2" but result returned via reference
-// This is specific to Golang, the value is going to be defined on the heap
-// not on stuck and removed on finishing the function
+// This is specific to Golang, the value is going to be defined on the heap not on the stack
+// so it will not be removed on finishing the function
 func sum3(values ...int) *int {
 	fmt.Println(values)
 	result := 0
@@ -106,6 +107,7 @@ func sum3(values ...int) *int {
 }
 
 // Same as "sum", but with named return parameter
+// Named parameter is zero initialized
 // apparently this is not very popular in go, as could be confusing
 func sum4(values ...int) (result int) {
 	fmt.Println(values)
@@ -116,12 +118,12 @@ func sum4(values ...int) (result int) {
 }
 
 // Example of returning multiple values from a function
-func divide(a, b float64) (float64, error){
+func divide(a, b float64) (float64, error) {
 	// we could panic here:
 	// if b == 0.0 {
 	// panic("Cannot provide zero as second value")
 	// }
-	
+
 	// but we could return an error via a second parameter
 	if b == 0.0 {
 		// Errorf provides a possibility to create error messages
