@@ -6,6 +6,7 @@ import (
 
 func main() {
 	// Defining an empty interface and setting it to 0 integer
+	// any type in go implements this interface, so it might by useful
 	var i interface{} = 0
 	// A switch over the type
 	switch i.(type) {
